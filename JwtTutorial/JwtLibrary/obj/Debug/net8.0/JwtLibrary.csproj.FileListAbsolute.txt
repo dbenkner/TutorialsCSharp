@@ -1,0 +1,14 @@
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\bin\Debug\net8.0\JwtLibrary.deps.json
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\bin\Debug\net8.0\JwtLibrary.runtimeconfig.json
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\bin\Debug\net8.0\JwtLibrary.dll
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\bin\Debug\net8.0\JwtLibrary.pdb
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.csproj.AssemblyReference.cache
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.AssemblyInfoInputs.cache
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.AssemblyInfo.cs
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.csproj.CoreCompileInputs.cache
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.dll
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\refint\JwtLibrary.dll
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.pdb
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\JwtLibrary.genruntimeconfig.cache
+C:\Users\David\source\repos\TutorialsC#\JwtTutorial\JwtLibrary\obj\Debug\net8.0\ref\JwtLibrary.dll
