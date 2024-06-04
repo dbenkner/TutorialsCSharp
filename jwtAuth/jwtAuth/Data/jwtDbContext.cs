@@ -14,6 +14,7 @@ public class jwtDbContext : DbContext
     public DbSet<jwtAuth.Models.Role> Roles { get; set; } = default!;
     public DbSet<User> Users { get; set; } = default!;
     public DbSet<UserToRole> UsersToRoles { get; set; } = default!;
+    public DbSet<Customer> Customers { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

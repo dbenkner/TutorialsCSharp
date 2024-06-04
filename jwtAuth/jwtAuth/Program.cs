@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<jwtDbContext>(options =>
@@ -13,7 +14,6 @@ builder.Services.AddDbContext<jwtDbContext>(options =>
 builder.Services.AddTransient<AuthService>();
 
 // Add services to the container.
-
 
 builder.Services.AddAuthentication( x =>
 {
@@ -31,18 +31,33 @@ builder.Services.AddAuthentication( x =>
 builder.Services.AddAuthorization(x =>
 {
     x.AddPolicy("admin", p => p.RequireRole("admin"));
+    x.AddPolicy("user", p => p.RequireRole("user"));
 });
 builder.Services.AddControllers();
-
+builder.Services.AddCors();
+builder.Services.AddRateLimiter(options =>
+{
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext => RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey: httpContext.User.Identity?.Name ?? httpContext.Request.HttpContext.ToString(),
+        factory: partition => new FixedWindowRateLimiterOptions
+        {
+            AutoReplenishment = true,
+            PermitLimit = 30,
+            QueueLimit = 0,
+            Window = TimeSpan.FromMinutes(1)
+        }));
+    options.RejectionStatusCode = 429;
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
+app.UseCors(a => a.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 
 app.MapControllers();
 
