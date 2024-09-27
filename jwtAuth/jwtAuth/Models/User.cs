@@ -5,13 +5,18 @@ using System.Text.Json.Serialization;
 namespace jwtAuth.Models
 {
     [Index("Username", IsUnique = true)]
+    [PrimaryKey("Id")]
     public class User
     {
+        [Key]
         public int Id { get; set; } = 0;
+        [Required]
         [StringLength(30)]
         public string Username { get; set; } = string.Empty;
+        [Required]
         [StringLength(30)]
         public string Name { get; set; } = string.Empty;
+        [Required]  
         [StringLength(60)]
         public string Email { get; set; } = string.Empty;
         [JsonIgnore]

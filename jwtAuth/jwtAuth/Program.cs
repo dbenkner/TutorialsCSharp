@@ -23,11 +23,20 @@ builder.Services.AddAuthentication( x =>
 {
     x.TokenValidationParameters = new TokenValidationParameters
     {
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.PrivateKey)),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         ValidateIssuer = false,
         ValidateAudience = false
     };
+    x.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            context.Token = context.Request.Cookies["Token"];
+            return Task.CompletedTask;
+        }
+    };
 });
+Configuration.PrivateKey = builder.Configuration["Jwt:Key"];
 builder.Services.AddAuthorization(x =>
 {
     x.AddPolicy("admin", p => p.RequireRole("admin"));

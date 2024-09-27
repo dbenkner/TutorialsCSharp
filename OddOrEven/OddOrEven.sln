@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OddOrEven", "OddOrEven\OddOrEven.csproj", "{C5901793-F90F-475C-AB4C-3A03DA761967}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5901793-F90F-475C-AB4C-3A03DA761967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5901793-F90F-475C-AB4C-3A03DA761967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5901793-F90F-475C-AB4C-3A03DA761967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5901793-F90F-475C-AB4C-3A03DA761967}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4F24FC1-F602-43FA-8087-8B4FBF94008F}
+	EndGlobalSection
+EndGlobal

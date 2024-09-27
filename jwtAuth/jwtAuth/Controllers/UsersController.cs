@@ -4,8 +4,8 @@ using jwtAuth.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 using System.Net;
-using System.Net.WebSockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -48,22 +48,28 @@ namespace jwtAuth.Controllers
             return Ok(user);
         }
         [HttpPost("login")]
-        public async Task<ActionResult<AuthService>> LogIn(AuthService service, LoginDto loginDto)
+        public async Task<ActionResult<HttpResponse>> LogIn(AuthService service, LoginDto loginDto)
         {
             if (loginDto == null) { return BadRequest(); }
             var user = await _context.Users.Include(u => u.Roles).ThenInclude(r => r.Role).FirstOrDefaultAsync(x => x.Username == loginDto.Username);
             if (user == null) { return BadRequest("Invalid Login"); }
             using var hmac = new HMACSHA256(user.PasswordSalt);
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
-            for(var i = 0; i < computedHash.Length; i++)
+            for (var i = 0; i < computedHash.Length; i++)
             {
                 if (user.PasswordHash[i] != computedHash[i])
                 {
                     return BadRequest();
                 }
             }
-            return Ok(service.Create(user));
-        }
+            var cookieOptions = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(1),
+                HttpOnly = true 
+            };
+            Response.Cookies.Append("Token", service.Create(user), cookieOptions);
+            return Ok(user);
+            }
         [HttpPut("resetpassword")]
         public async Task<ActionResult<User>> ResetPassword(ResetPwDTO resetPwDTO)
         {

@@ -73,7 +73,7 @@ namespace jwtAuth.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("jwtAuth.Models.Role", b =>
@@ -90,7 +90,7 @@ namespace jwtAuth.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
 
                     b.HasData(
                         new
@@ -143,7 +143,7 @@ namespace jwtAuth.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -172,7 +172,7 @@ namespace jwtAuth.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsersToRoles");
+                    b.ToTable("UsersToRoles", (string)null);
 
                     b.HasData(
                         new
